@@ -1,9 +1,17 @@
 <template>
   <div>
     <h1>{{ title }}</h1>
-    <input type="text" ref="name">
-    <button @click="handleClick">Click Me</button>
-    <Modal :header="header" :text="text" />
+    <div>
+      <p v-if="!showModal">Welcome...</p>
+      <div v-else>
+        <input type="text" ref="name">
+        <button @click="handleClick">Click Me</button>
+      </div>
+    </div>
+    <div v-show="showModal">
+      <Modal :header="header" :text="text" theme="sale" :toggleClose="toggleModal"/>
+    </div>
+    <button v-show="!showModal" @click="toggleModal">Open modal</button>
   </div>
 </template>
 
@@ -18,12 +26,16 @@
       return {
         title: "My First Vue App :)",
         header: "Sign up for the Giveaway",
-        text: "Grab your ninja swag for half price!"
+        text: "Grab your ninja swag for half price!",
+        showModal: false,
       }
     },
     methods: {
       handleClick() {
-        this.title = this.$refs.name.value
+        this.title = this.$refs.name.value;
+      },
+      toggleModal() {
+        this.showModal = !this.showModal;
       }
     }
   }
