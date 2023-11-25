@@ -9,7 +9,10 @@
       </div>
     </div>
     <div v-show="showModal">
-      <Modal :header="header" :text="text" theme="sale" @close="toggleModal"/>
+      <Modal theme="sale" @close="toggleModal">
+          <h1>{{ header }}</h1>
+          <p>{{ text }}</p>
+      </Modal>
     </div>
     <button v-show="!showModal" @click.alt="toggleModal">Open modal (alt)</button>
   </div>
@@ -25,8 +28,8 @@
     data(){
       return {
         title: "My First Vue App :)",
-        header: "Sign up for the Giveaway",
-        text: "Grab your ninja swag for half price!",
+        header: "SPA Foundation & Other Donors",
+        text: "Grab your monthly free data!",
         showModal: false,
       }
     },

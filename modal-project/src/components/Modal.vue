@@ -2,8 +2,7 @@
     <div class="backdrop">
         <span class="close_modal" @click.self="toggleClose">X</span>
         <div class="modal" :class="{sale : theme === 'sale'}">
-            <h1>{{ header }}</h1>
-            <p>{{ text }}</p>
+           <slot></slot>
         </div>
     </div>
 </template>
