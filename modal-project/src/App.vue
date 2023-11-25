@@ -21,6 +21,17 @@
       </Modal>
     </div>
     <button v-show="!showModal" @click.alt="toggleModal">Open modal (alt)</button>
+    <div v-show="showModalTwo">
+      <Modal @close="toggleModalTwo">
+        <template v-slot:modal_info>
+          <h3>How to apply?</h3>
+          <p>Join the group through the link displayed on the homepage and then chat in your usage objective(s).</p>
+        </template>
+        <h1>December Giveaway!</h1>
+        <p>For God so loved the world that he gave his only begotten Son...</p>
+      </Modal>
+    </div>
+    <button v-show="!showModalTwo" @click="toggleModalTwo">Open modal</button>
   </div>
 </template>
 
@@ -37,6 +48,7 @@
         header: "SPA Foundation & Other Donors",
         text: "Grab your monthly free data!",
         showModal: false,
+        showModalTwo: false,
       }
     },
     methods: {
@@ -45,6 +57,9 @@
       },
       toggleModal() {
         this.showModal = !this.showModal;
+      },
+      toggleModalTwo() {
+        this.showModalTwo = !this.showModalTwo
       }
     }
   }
