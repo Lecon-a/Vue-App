@@ -8,7 +8,7 @@
         <button @click="handleClick">Click Me</button>
       </div>
     </div>
-    <div v-show="showModal">
+    <teleport to=".modals" v-if="showModal">
       <Modal theme="sale" @close="toggleModal">
         <!-- named slot -->
           <template v-slot:links>
@@ -19,9 +19,9 @@
           <h1>{{ header }}</h1>
           <p>{{ text }}</p>
       </Modal>
-    </div>
-    <button v-show="!showModal" @click.alt="toggleModal">Open modal (alt)</button>
-    <div v-show="showModalTwo">
+    </teleport>
+    
+    <teleport to=".modals" v-if="showModalTwo">
       <Modal @close="toggleModalTwo">
         <template v-slot:modal_info>
           <h3>How to apply?</h3>
@@ -30,7 +30,8 @@
         <h1>December Giveaway!</h1>
         <p>For God so loved the world that he gave his only begotten Son...</p>
       </Modal>
-    </div>
+    </teleport>
+    <button v-show="!showModal" @click.alt="toggleModal">Open modal (alt)</button>
     <button v-show="!showModalTwo" @click="toggleModalTwo">Open modal</button>
   </div>
 </template>
@@ -71,7 +72,7 @@ body {
   padding: 0;
 }
 
-#app {
+#app, .modals {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
