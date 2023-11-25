@@ -10,6 +10,12 @@
     </div>
     <div v-show="showModal">
       <Modal theme="sale" @close="toggleModal">
+        <!-- named slot -->
+          <template v-slot:links>
+            <a href="#">How to Apply</a>
+            <a href="#">Apply Now</a>
+          </template>
+          <!-- normal slot -->
           <h1>{{ header }}</h1>
           <p>{{ text }}</p>
       </Modal>

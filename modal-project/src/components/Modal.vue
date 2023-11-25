@@ -3,6 +3,9 @@
         <span class="close_modal" @click.self="toggleClose">X</span>
         <div class="modal" :class="{sale : theme === 'sale'}">
            <slot></slot>
+           <div class="modal_actions">
+                <slot name="links"></slot>
+           </div>
         </div>
     </div>
 </template>
