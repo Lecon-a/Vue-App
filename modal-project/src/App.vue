@@ -9,9 +9,9 @@
       </div>
     </div>
     <div v-show="showModal">
-      <Modal :header="header" :text="text" theme="sale" :toggleClose="toggleModal"/>
+      <Modal :header="header" :text="text" theme="sale" @close="toggleModal"/>
     </div>
-    <button v-show="!showModal" @click="toggleModal">Open modal</button>
+    <button v-show="!showModal" @click.alt="toggleModal">Open modal (alt)</button>
   </div>
 </template>
 

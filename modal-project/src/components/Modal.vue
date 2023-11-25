@@ -1,7 +1,7 @@
 <template>
     <div class="backdrop">
+        <span class="close_modal" @click.self="toggleClose">X</span>
         <div class="modal" :class="{sale : theme === 'sale'}">
-            <span class="close_modal" @click="toggleClose">X</span>
             <h1>{{ header }}</h1>
             <p>{{ text }}</p>
         </div>
@@ -10,7 +10,12 @@
 
 <script>
     export default {
-        props: ['header', 'text', 'theme', 'toggleClose'],
+        props: ['header', 'text', 'theme'],
+        methods: {
+            toggleClose() {
+                this.$emit('close')
+            }
+        }
     }
 </script>
 
@@ -18,7 +23,6 @@
     .modal {
         display: flex;
         flex-direction: column;
-        position: relative;
         width: 400px;
         padding: 16px 20px 20px;
         margin: 10rem auto;
